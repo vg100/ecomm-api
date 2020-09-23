@@ -1,0 +1,139 @@
+
+@products=http://localhost:8000/api/products
+@reviews=http://localhost:8000/api/reviews
+@orders=http://localhost:8000/api/orders
+@category=http://localhost:8000/api/categories
+
+@auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpamF5QGdtYWlsLmNvbSIsImN1c3RvbWVyX2lkIjoiNWViNmQ1MmFlMzZmODA0NWI4MjE1ODRmIiwiaWF0IjoxNTg5MDg5MDM3LCJleHAiOjE1OTk0NTcwMzd9.rYEg--XcMX8UgvSh3zq15PdD_HIaLy2TVzZvf6oLXnA
+######################users api###############################
+GET http://localhost:8000/api/customers/login?email=vijay@gmail.com&password=vijay
+###########
+POST http://localhost:8000/api/customers/register
+content-type: application/json
+
+{
+    "email":"vijay@gmail.com",
+    "password":"vijay"
+}
+###########
+PUT http://localhost:8000/api/customers/
+content-type: application/json
+authorization:{{auth}}
+
+{
+      "fullName":"ajay",
+      "email":"ajay@gmail.com"
+}
+############
+PUT http://localhost:8000/api/customers/creditcard
+content-type: application/json
+authorization:{{auth}}
+
+{
+    "credit_card":"VISAA"
+}
+###########
+PUT http://localhost:8000/api/customers/address
+content-type: application/json
+authorization:{{auth}}
+
+{
+    "address_1":"address_2",
+    "address_2":"address_2"
+}
+###########
+DELETE http://localhost:8000/api/customers//deleteallusers
+
+######################products api###############################
+
+GET {{products}}/allproduct
+###
+GET {{products}}/incategory/mobile
+###
+GET {{products}}/search?search=mobile
+###
+GET {{products}}/5eb6f4b42fa79c58a8dd11e9
+
+###
+POST {{products}}/addproduct
+content-type: application/json
+
+{
+    "product_name":"txc",
+    "description":"tve description",
+    "category":"mobile",
+    "price":345
+    }
+###
+@productId=
+PATCH {{products}}/update/{{productId}}
+content-type: application/json
+
+{
+    "productname":"89750",
+    "price":"8ds90"
+}
+################review###############
+@productId=
+GET  {{reviews}}/allreview
+###
+POST {{reviews}}/addreview/{{productId}}
+content-type: application/json
+
+{
+    "review":"89750"
+}
+
+##############order##############
+
+POST {{orders}}/
+content-type: application/json
+authorization:{{auth}}
+
+{
+    "product_name":"txc",
+    "description":"tve description",
+    "category":"mobile",
+    "price":345
+    }
+
+
+###############category############
+
+
+POST {{category}}/category
+content-type: application/json
+
+{
+    "category_name":"el"
+}
+
+###
+GET {{category}}/categories
+###
+
+
+GET http://localhost:8000/api/customers/5f1ec7d2d4235a371047ca1f
+###
+
+
+
+
+POST http://localhost:8000/api/cart/addtocart
+content-type: application/json
+authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpamF5QGdtYWlsLmNvbSIsImN1c3RvbWVyX2lkIjoiNWYxZWM3ZDJkNDIzNWEzNzEwNDdjYTFmIiwiaWF0IjoxNTk1ODUzMTE2LCJleHAiOjE2MDYyMjExMTZ9.e-3lfvJsgv_L-SJaZVu1F89E9KNcuvdCntSojvefZho
+
+{
+   "product_id":"5eb6f4b42fa79c58a8dd11e9"
+}
+
+###
+
+
+POST http://localhost:8000/api/cart/removetocart
+content-type: application/json
+authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpamF5QGdtYWlsLmNvbSIsImN1c3RvbWVyX2lkIjoiNWViNmQ1MmFlMzZmODA0NWI4MjE1ODRmIiwiaWF0IjoxNTk0Mzc1NTU5LCJleHAiOjE2MDQ3NDM1NTl9.SYrYlojqRatXPfv024YZ3JAn8h0vTvz43RqhcwpGDqE
+
+{
+   "cart_id":"5f1ed001cafb960b285bc79a"
+}
